@@ -306,10 +306,11 @@ class YoutubeBridge(BaseBridge):
                 f"https://www.youtube.com/results?search_query={quote_plus(parsed.query)}"  # noqa: E501
             )
         elif parsed.path == "next_up":
-            self.driver.find_element_by_css_selector(
+            element =  self.driver.find_element_by_css_selector(
                 "a.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button"
-            ).click()
+            )
             self.__wait_for_video_completion()
+            self.driver.execute_script("arguments[0].click();", element)
         elif parsed.path == "like":
             self.driver.find_element_by_xpath(
                 '//button[starts-with(@aria-label, "Like")]'
