@@ -307,7 +307,7 @@ class YoutubeBridge(BaseBridge):
             )
         elif parsed.path == "next_up":
             self.driver.find_element_by_css_selector(
-                "ytp-autonav-endscreen-upnext-header"
+                ".ytp-autonav-endscreen-link-container"
             ).click()
             self.__wait_for_video_completion()
         elif parsed.path == "like":
