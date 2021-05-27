@@ -221,6 +221,7 @@ class YoutubeBridge(BaseBridge):
                 player.playVideo()
             """
             )
+            time.sleep(3)
 
         # In case we do get stuck behind an ad, we'll wait for a long time
         length = self.driver.execute_script(
@@ -310,7 +311,7 @@ class YoutubeBridge(BaseBridge):
                 ".ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button"
             )
             self.__wait_for_video_completion()
-            self.driver.implicitly_wait(7)
+
             self.driver.execute_script("arguments[0].click();", element)
         elif parsed.path == "like":
             self.driver.find_element_by_xpath(
