@@ -307,9 +307,10 @@ class YoutubeBridge(BaseBridge):
             )
         elif parsed.path == "next_up":
             element =  self.driver.find_element_by_css_selector(
-                "a.ytp-autonav-endscreen-upnext-button.ytp-autonav-endscreen-upnext-play-button"
+                ".ytp-autonav-endscreen-upnext-button"
             )
             self.__wait_for_video_completion()
+            self.driver.implicitly_wait(3)
             self.driver.execute_script("arguments[0].click();", element)
         elif parsed.path == "like":
             self.driver.find_element_by_xpath(
